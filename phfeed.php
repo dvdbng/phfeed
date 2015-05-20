@@ -4,7 +4,6 @@ ini_set('display_errors', '1');
 
 set_include_path(get_include_path() . PATH_SEPARATOR . '/usr/local/lib/php');
 require_once "config.php";
-require_once "Embedly.php";
 require_once "Cache/Lite.php";
 
 $cache = new Cache_Lite(array(
