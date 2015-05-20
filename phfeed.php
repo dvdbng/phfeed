@@ -205,18 +205,18 @@ function edit_common($data) {
 
     $data["description"] = strtr($content, $trans);
     $data["url"] = get($url, $discussion_url);
+    $data["tagline"] = htmlspecialchars($tagline);
 
     return $data;
 }
 
-$minscore = isset($_GET["ups"]) ? $_GET['ups'] : 0;
+$minscore = isset($_GET["ups"]) ? intval($_GET['ups']) : 0;
 
 foreach(get_ph_frontpage() as $i=>$data){
     if($data["votes_count"] > $minscore){
         $items[] = edit_common($data);
     }
 }
-
 
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
@@ -231,7 +231,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
             <link><?php echo htmlspecialchars($v["url"]); ?></link>
             <description><?php echo $v["description"]; ?></description>
             <author><?php echo "{$v['user']['username']}@producthunt.com ({$v['user']['name']})"?></author>
-            <guid isPermaLink="false">hn-<?php echo htmlspecialchars($v["id"]); ?></guid>
+            <guid isPermaLink="false">ph-<?php echo htmlspecialchars($v["id"]); ?></guid>
         </item>
 <?php endforeach; endif; ?>
     </channel>
