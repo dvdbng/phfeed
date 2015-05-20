@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /var/www/hoyga/
+
+echo "Updating ph feed"
+curl -s "http://hoyga.com/phfeed/phfeed.php" > "phfeed.xml"
+
