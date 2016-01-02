@@ -3,5 +3,5 @@
 cd /var/www/hoyga/
 
 echo "Updating ph feed"
-curl -s "http://hoyga.com/phfeed/phfeed.php?ups=15" > "phfeed.xml"
+php /var/www/hoyga/phfeed/phfeed.php 15 > "phfeed.xml"
 

@@ -210,7 +210,16 @@ function edit_common($data) {
     return $data;
 }
 
-$minscore = isset($_GET["ups"]) ? intval($_GET['ups']) : 0;
+function get_arg($name, $n) {
+    if(isset($_GET[$name])) {
+        return $_GET[$name];
+    }
+    if(isset($argv[$n])) {
+        return $argv[$n];
+    }
+}
+$minscore = get_arg('ups', 1);
+$minscore = $minscore ? $minscore : 0;
 
 foreach(get_ph_frontpage() as $i=>$data){
     if($data["votes_count"] > $minscore){
